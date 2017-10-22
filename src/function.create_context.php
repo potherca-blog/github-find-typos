@@ -5,7 +5,7 @@ namespace Potherca\WebApplication\Generic;
 // =============================================================================
 /*/ Create contexts /*/
 // -----------------------------------------------------------------------------
-function create_context(array $arguments, array $results, $composerContent = '', $userContext = [])
+function create_context(array $arguments, array $results, array $composer = [], $userContext = [])
 {
   /* All of the keys available from the generic application template */
   $defaults = [
@@ -36,7 +36,7 @@ function create_context(array $arguments, array $results, $composerContent = '',
   ];
 
   /* Create context from `composer.json` */
-  $composerContext = create_composer_context(json_decode($composerContent, true));
+  $composerContext = create_composer_context($composer);
 
   // -----------------------------------------------------------------------------
   /* Create the result context */
@@ -74,5 +74,23 @@ function create_context(array $arguments, array $results, $composerContent = '',
 
   return $context;
 }
+// =============================================================================
+
+// =============================================================================
+/*/ Potherca projects generic context /*/
+// -----------------------------------------------------------------------------
+function create_potherca_context($userContext) {
+  return array_replace_recursive(
+    $userContext,
+    [
+      'project' => ['author' => 'Potherca'],
+      'stylesheets' => [
+        'https://pother.ca/CssBase/css/created-by-potherca.css',
+        '/application.css',
+      ],
+    ]
+  );
+}
+// =============================================================================
 
 /*EOF*/
