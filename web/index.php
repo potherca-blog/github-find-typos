@@ -2,43 +2,19 @@
 
 namespace Potherca\GiFiTy;
 
-use Dotenv\Dotenv;
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-$projectPath = dirname(__DIR__);
-
-require $projectPath.'/vendor/autoload.php';
+define('PROJECT_ROOT', dirname(__DIR__));
 
 // =============================================================================
-/*/ Grab things from Disk, DB, Request, Environment, etc. /*/
+// Project specfic configuration
 // -----------------------------------------------------------------------------
-/* Load `.env` */
-if (is_readable($projectPath . '/.env')) {
-  $dotenv = new Dotenv($projectPath, '.env');
-  $dotenv->load();
-  unset($dotenv);
-}
-
-// -----------------------------------------------------------------------------
-/* Read `composer.json` content */
-$project = json_decode(file_get_contents($projectPath.'/composer.json'), true);
-// =============================================================================
-
-
-// =============================================================================
-/*/ Project specfic configuration /*/
-// -----------------------------------------------------------------------------
-require $projectPath.'/src/GiFiTy/function.fetch_results.php';
+require PROJECT_ROOT.'/src/function.fetch_results.php';
 
 $callback = '\\Potherca\\GiFiTy\\fetch_results';
 
-$parameters = require $projectPath.'/src/GiFiTy/config.command.php';
+$parameters = require PROJECT_ROOT.'/src/config.command.php';
 
 $templateLanguage = 'mustache';
-$resultTemplatePath = $projectPath.'/src/GiFiTy/template/result.'.$templateLanguage;
+$resultTemplatePath = PROJECT_ROOT.'/src/template/result.'.$templateLanguage;
 
 $resultTemplate = file_get_contents($resultTemplatePath);
 
@@ -59,40 +35,5 @@ $valueDecoraters = [
 ];
 // =============================================================================
 
+require dirname(__DIR__).'/vendor/potherca/cli2web/web/index.php';
 
-// =============================================================================
-// Call "Potherca\WebApplication" logic
-// -----------------------------------------------------------------------------
-$userContext = \Potherca\WebApplication\Generic\create_potherca_context($userContext);
-
-/* Load GET parameters  */
-$arguments = \Potherca\WebApplication\Generic\load_values(
-  $parameters,      // array - configures which arguments, options and flags are available
-  $valueDecoraters  // array - values or callbacks that are applied to the user input values
-);
-
-/* Create the result */
-$results = $callback($arguments);
-
-/* Context the UI content is based on */
-
-$context =\Potherca\WebApplication\Generic\create_context(
-  $arguments,   // array - Created by "potherca/webapplication"
-  $results,     // array - Created by "callback"
-  $project,     // array - from `composer.json` content
-  $userContext  // array - override values in the context that is fead to the templates
-);
-
-/* Create UI content */
-$content = \Potherca\WebApplication\Generic\create_content(
-  $templateLanguage,  // language the result template is written in. Can be plain PHP or Mustache
-  $resultTemplate,    // string that consists of the template the result array is fed to
-  $context            // Created by "potherca/webapplication"
-);
-// =============================================================================
-
-
-echo $content;
-exit;
-
-/*EOF*/
