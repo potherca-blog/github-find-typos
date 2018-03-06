@@ -15,20 +15,12 @@
         "source": "https://github.com/potherca-blog/github-find-typos"
     },
     "require": {
-        "mustache/mustache": "^2.12",
-        "vlucas/phpdotenv": "^2.4"
+        "potherca/cli2web": "dev-master"
     },
     "autoload":{
-      "psr4"  : {
-          "Potherca\\WebApplication\\Generic\\": "src/"
-      },
-      "files" : [
-          "src/function.create_composer_context.php",
-          "src/function.create_content.php",
-          "src/function.create_context.php",
-          "src/function.create_form_context.php",
-          "src/function.load_values.php"
-      ]
+        "psr-4"  : {
+            "Potherca\\GiFiTy\\": "src/"
+        }
     },
     "config":{
         "bin-dir":"bin",
