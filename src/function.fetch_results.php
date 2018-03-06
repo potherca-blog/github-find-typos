@@ -16,7 +16,6 @@ function fetch_results(array $arguments)
     }, '');
 
     $data = [];
-
     if ($query !== '') {
         $params = http_build_query([
           'per_page' => '100',
