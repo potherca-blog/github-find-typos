@@ -4,9 +4,65 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2d84d6837ae2f8c6297a0a135ae79e40",
-    "content-hash": "5a03100161d8a58bff7e6cf695a23a77",
+    "content-hash": "33cd149d981a8d3abc8161d694c74840",
     "packages": [
+        {
+            "name": "hassankhan/config",
+            "version": "0.11.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hassankhan/config.git",
+                "reference": "7fbc236c32dc6cc53a7b00992a2739cf8b41c085"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hassankhan/config/zipball/7fbc236c32dc6cc53a7b00992a2739cf8b41c085",
+                "reference": "7fbc236c32dc6cc53a7b00992a2739cf8b41c085",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.2"
+            },
+            "suggest": {
+                "symfony/yaml": "~2.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Noodlehaus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hassan Khan",
+                    "homepage": "http://hassankhan.me/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Lightweight configuration file loader that supports PHP, INI, XML, JSON, and YAML files",
+            "homepage": "http://hassankhan.me/config/",
+            "keywords": [
+                "config",
+                "configuration",
+                "ini",
+                "json",
+                "microphp",
+                "unframework",
+                "xml",
+                "yaml",
+                "yml"
+            ],
+            "time": "2017-11-07T22:49:43+00:00"
+        },
         {
             "name": "mustache/mustache",
             "version": "v2.12.0",
@@ -51,7 +107,53 @@
                 "mustache",
                 "templating"
             ],
-            "time": "2017-07-11 12:54:05"
+            "time": "2017-07-11T12:54:05+00:00"
+        },
+        {
+            "name": "potherca/cli2web",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../cli2web",
+                "reference": "590116881ffcfcd7a61d6bd91f856720a0008562",
+                "shasum": null
+            },
+            "require": {
+                "hassankhan/config": "^0.11",
+                "mustache/mustache": "^2.12",
+                "php": "^5.6 | ^7.0",
+                "vlucas/phpdotenv": "^2.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr4": {
+                    "Potherca\\WebApplication\\Generic\\": "src/"
+                },
+                "files": [
+                    "src/function.create_composer_context.php",
+                    "src/function.create_content.php",
+                    "src/function.create_context.php",
+                    "src/function.create_form_context.php",
+                    "src/function.load_values.php"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Peachey",
+                    "email": "potherca@gmail.com",
+                    "homepage": "https://pother.ca/"
+                }
+            ],
+            "homepage": "https://pother.ca/cli-to-web",
+            "support": {
+                "source": "https://github.com/potherca/cli-to-web"
+            },
+            "transport-options": {
+                "symlink": true
+            }
         },
         {
             "name": "vlucas/phpdotenv",
@@ -101,13 +203,15 @@
                 "env",
                 "environment"
             ],
-            "time": "2016-09-01 10:05:43"
+            "time": "2016-09-01T10:05:43+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "potherca/cli2web": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
