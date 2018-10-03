@@ -7,7 +7,7 @@
     "authors": [
         {
             "name": "Ben Peachey",
-            "email": "potherca@hotmail.com",
+            "email": "potherca@gmail.com",
             "homepage": "https://pother.ca/"
         }
     ],
@@ -15,7 +15,7 @@
         "source": "https://github.com/potherca-blog/github-find-typos"
     },
     "require": {
-        "potherca/cli2web": "dev-master"
+        "potherca/cli2web": "^0.5"
     },
     "autoload":{
         "psr-4"  : {
