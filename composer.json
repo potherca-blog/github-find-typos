@@ -15,6 +15,7 @@
         "source": "https://github.com/potherca-blog/github-find-typos"
     },
     "require": {
+        "php":"^5.6 | ^7.0",
         "potherca/cli2web": "^0.5"
     },
     "autoload":{
