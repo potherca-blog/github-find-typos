@@ -1,6 +1,6 @@
 {
     "name": "potherca/github-find-typos",
-    "description": "Finding typo's in the most popular github repositories made easy.",
+    "description": "Finding typos in the most popular github repositories made easy.",
     "type": "project",
     "homepage": "https://blog.pother.ca/github-find-typos",
     "license": "GPL-3.0",

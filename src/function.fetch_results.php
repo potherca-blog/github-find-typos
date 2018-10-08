@@ -52,7 +52,7 @@ function fetch_results(array $arguments)
         $result['stars'] = count($stargazers);
     });
 
-    /* Sort repo's by star count */
+    /* Sort repos by star count */
     usort($results, function ($a, $b) {
         return $a['stars'] < $b['stars'];
     });
@@ -61,7 +61,7 @@ function fetch_results(array $arguments)
     array_walk($results, function (&$result) {
         $parts = explode('/', $result['file_url']);
         $parts['5'] = 'edit';   // blob
-        // @FIXME: The main branch MIGHT not be `master`, replace hard-coded value with brach from response object
+        // @FIXME: The main branch MIGHT not be `master`, replace hard-coded value with branch from response object
         $parts['6'] = 'master'; // SHA1 hash
         $result['edit_url'] = implode('/', $parts);
     });
@@ -78,7 +78,7 @@ function fetch_results(array $arguments)
 
     // @FIXME: Multiple results for the same repo need to be added together!
     // @CHECKME: Do we want to do anything for _exactly_ the same matches within one repo?
-    // @CHECKME: Repo's can still be clones even if they are not marked as forks! What then?
+    // @CHECKME: Repos can still be clones even if they are not marked as forks! What then?
 
     return $results;
 }
