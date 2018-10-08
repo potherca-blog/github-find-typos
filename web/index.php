@@ -19,7 +19,7 @@ $resultTemplatePath = PROJECT_ROOT.'/src/template/result.'.$templateLanguage;
 $resultTemplate = file_get_contents($resultTemplatePath);
 
 $userContext = [
-  'description' => 'Fill in your faborite typing mistake (typo) in the field below and press the buttin',
+  'description' => 'Fill in your favorite typing mistake (typo) in the field below and press the button',
   'project' => ['version' => exec('git tag | tail -n1')],
   'submit_icon' => 'search',
   'submit_name' => 'Search',
