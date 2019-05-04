@@ -1,0 +1,75 @@
+@startuml
+
+skinparam sequenceGroupBackgroundColor #D0EAFB
+skinparam sequenceGroupBackgroundColor #D0EAFB
+
+== ACTORS ==
+
+actor User as client
+
+box "Application" #FFC
+    boundary "Github Typo Search" as server
+end box
+
+box "External HTTP API's" #FFE
+    entity "Wordnik API" as wn
+    entity "Github API" as gh
+end box
+
+client <--> server
+server --> wn
+server --> gh
+
+== EVENTS ==
+group Show search form
+    client o-> server: Request search page
+    activate server
+        client <- server: Respond with search page
+    deactivate server
+end
+
+group Show search Results
+    client o-> server: Request search for options
+    note right
+        ""search-term""
+        ""skip-typo-check""
+        ""show-duplicates""
+        ""show-multi-typo-hits""
+    end note
+    activate server
+        server -> wn : Request word for search-term
+        activate wn
+            server <-- wn : Respond with word result
+        deactivate wn
+
+        alt query is not a typo] //AND// [""skip-typo-check == false""
+            server -> client: Respond with error message
+        else query is a typo] //OR// [""skip typo check == true""
+            server -> gh : Request search-term search
+            activate server
+                activate gh
+                    server <-- gh : Respond with search result
+                    loop each result
+                        server -> gh: Request "stars"
+
+                        activate gh
+                            server <-- gh: Respond with "stars"
+                        deactivate gh
+                    end
+                deactivate gh
+            deactivate server
+
+            loop each result
+                server -> server: Mark search-result that has multiple typo's
+            end
+
+            loop each result
+                server -> server: Mark search-result that exist multiple times
+            end
+            server -> server: Sort search results by star count
+            server -> client: Respond with search results
+        end
+    deactivate server
+end
+
+@enduml
