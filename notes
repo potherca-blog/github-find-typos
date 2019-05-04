@@ -1,0 +1,49 @@
+As is to be expected this project is not the only one to have a fascination with
+typo's. So to avoid false-positives, a black-list needs to be added for sites/files
+that should not be considered a viable candidate for a pull request.
+
+Another way to go is to expand the list of "known" typos to "as much as possible"
+and check the found text for more typo's. At a given count (3?) such results
+should be ignored. The typo-count could be added as configurable via the form.
+
+Word input _could_ be checked against wordnik to make sure they don't actually exist.
+If they exist, instead of the Github view, show the Wordnik output.
+@see https://github.com/wordnik/wordnik-php
+
+Sources for more typo's:
+
+- https://github.com/zeke/zeke.sikelianos.com/blob/HEAD/outcasts/index.md
+
+*/
+
+
+UI    : Display "API token here" with link on how to get one
+      : Display list of words
+      ? Display list of search options?
+USER  : Add token
+      : Select a word
+LOGIC :
+        1. Make search call
+            $ sJson=$(curl --silent -G https://api.github.com/search/code \
+                --data-urlencode 'per_page=100' \
+                --data-urlencode 'q=aboutthe language:Markdown in:file' \
+                -u potherca:d8d6fcf4bfd853030e3a4f9475a28681799659eb \
+                -H 'Accept: application/vnd.github.v3.text-match+json' \
+              )
+            $ sHeaders=$(curl --silent -G https://api.github.com/search/code \
+                --data-urlencode 'per_page=100' \
+                --data-urlencode 'q=aboutthe language:Markdown in:file' \
+                -u potherca:d8d6fcf4bfd853030e3a4f9475a28681799659eb \
+                -o -D - \
+              )
+        2. Fetch a few more pages ? (there's only 100 hits per page)
+          Use the `Link` header from sHeaders for this.
+        3. For each hit, fetch amount of stars
+          echo "${sJson}" | grep stargazers_url --> curl --> count JSON array entries
+        4. Sort result based on "stargazers" count
+
+UI    : Display found result, in order of most stars first using the indices to highlight matches
+
+Q: - Which language to use?
+  - Where to host? (heroku?)
+  - Client or server side? (Client would require "bring your own API token")
