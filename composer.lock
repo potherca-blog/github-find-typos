@@ -1,35 +1,36 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b14a738d8e2495d46daf26ebc37f0204",
+    "content-hash": "266483672007d492ef89c94cc4e3aac7",
     "packages": [
         {
             "name": "hassankhan/config",
-            "version": "0.11.2",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hassankhan/config.git",
-                "reference": "7fbc236c32dc6cc53a7b00992a2739cf8b41c085"
+                "reference": "16fa4d3320ac9bb611dda0c8ea980edb58d227c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hassankhan/config/zipball/7fbc236c32dc6cc53a7b00992a2739cf8b41c085",
-                "reference": "7fbc236c32dc6cc53a7b00992a2739cf8b41c085",
+                "url": "https://api.github.com/repos/hassankhan/config/zipball/16fa4d3320ac9bb611dda0c8ea980edb58d227c9",
+                "reference": "16fa4d3320ac9bb611dda0c8ea980edb58d227c9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.5.9"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0",
+                "phpunit/phpunit": "~4.8 || ~5.7 || ~6.5 || ~7.5",
                 "scrutinizer/ocular": "~1.1",
-                "squizlabs/php_codesniffer": "~2.2"
+                "squizlabs/php_codesniffer": "~2.2",
+                "symfony/yaml": "~3.4"
             },
             "suggest": {
-                "symfony/yaml": "~2.5"
+                "symfony/yaml": "~3.4"
             },
             "type": "library",
             "autoload": {
@@ -61,7 +62,7 @@
                 "yaml",
                 "yml"
             ],
-            "time": "2017-11-07T22:49:43+00:00"
+            "time": "2019-09-01T15:51:42+00:00"
         },
         {
             "name": "mustache/mustache",
@@ -110,24 +111,74 @@
             "time": "2017-07-11T12:54:05+00:00"
         },
         {
-            "name": "potherca/cli2web",
-            "version": "v0.5.0",
+            "name": "phpoption/phpoption",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Potherca/cli2web.git",
-                "reference": "e89db69a36e3aab4a7fb7c008f895fd309984761"
+                "url": "https://github.com/schmittjoh/php-option.git",
+                "reference": "94e644f7d2051a5f0fcf77d81605f152eecff0ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Potherca/cli2web/zipball/e89db69a36e3aab4a7fb7c008f895fd309984761",
-                "reference": "e89db69a36e3aab4a7fb7c008f895fd309984761",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/94e644f7d2051a5f0fcf77d81605f152eecff0ed",
+                "reference": "94e644f7d2051a5f0fcf77d81605f152eecff0ed",
                 "shasum": ""
             },
             "require": {
-                "hassankhan/config": "^0.11",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.7.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "PhpOption\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache2"
+            ],
+            "authors": [
+                {
+                    "name": "Johannes M. Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "Option Type for PHP",
+            "keywords": [
+                "language",
+                "option",
+                "php",
+                "type"
+            ],
+            "time": "2015-07-25T16:39:46+00:00"
+        },
+        {
+            "name": "potherca/cli2web",
+            "version": "v0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Potherca/cli2web.git",
+                "reference": "8518a96d10e5ce78726a078ff16b613fbba29c70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Potherca/cli2web/zipball/8518a96d10e5ce78726a078ff16b613fbba29c70",
+                "reference": "8518a96d10e5ce78726a078ff16b613fbba29c70",
+                "shasum": ""
+            },
+            "require": {
+                "hassankhan/config": "^2.0.0",
                 "mustache/mustache": "^2.12",
                 "php": "^5.6 | ^7.0",
-                "vlucas/phpdotenv": "^2.4"
+                "vlucas/phpdotenv": "^3.0.0"
             },
             "type": "library",
             "autoload": {
@@ -154,32 +205,92 @@
                 }
             ],
             "homepage": "https://pother.ca/cli2web",
-            "time": "2018-10-03T18:17:23+00:00"
+            "time": "2019-09-06T19:26:31+00:00"
         },
         {
-            "name": "vlucas/phpdotenv",
-            "version": "v2.5.1",
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.12.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e"
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "550ebaac289296ce228a706d0867afc34687e3f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
-                "reference": "8abb4f9aa89ddea9d52112c65bbe8d0125e2fa8e",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/550ebaac289296ce228a706d0867afc34687e3f4",
+                "reference": "550ebaac289296ce228a706d0867afc34687e3f4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.3.3"
             },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.0"
+            "suggest": {
+                "ext-ctype": "For best performance"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                    "dev-master": "1.12-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2019-08-06T08:03:45+00:00"
+        },
+        {
+            "name": "vlucas/phpdotenv",
+            "version": "v3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/phpdotenv.git",
+                "reference": "95cb0fa6c025f7f0db7fc60f81e9fb231eb2d222"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/95cb0fa6c025f7f0db7fc60f81e9fb231eb2d222",
+                "reference": "95cb0fa6c025f7f0db7fc60f81e9fb231eb2d222",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4 || ^7.0",
+                "phpoption/phpoption": "^1.5",
+                "symfony/polyfill-ctype": "^1.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.0 || ^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.5-dev"
                 }
             },
             "autoload": {
@@ -193,9 +304,14 @@
             ],
             "authors": [
                 {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "homepage": "https://gjcampbell.co.uk/"
+                },
+                {
                     "name": "Vance Lucas",
                     "email": "vance@vancelucas.com",
-                    "homepage": "http://www.vancelucas.com"
+                    "homepage": "https://vancelucas.com/"
                 }
             ],
             "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
@@ -204,7 +320,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-07-29T20:33:41+00:00"
+            "time": "2019-08-27T17:00:38+00:00"
         }
     ],
     "packages-dev": [],
@@ -214,7 +330,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^5.6 | ^7.0"
+        "php": "^7.0"
     },
     "platform-dev": []
 }
