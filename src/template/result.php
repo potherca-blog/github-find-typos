@@ -5,11 +5,11 @@
         <a href="<?= htmlentities($result['repository_url']) ?>" target="_blank"><?= htmlentities($result['repository_name']) ?></a>
       </p>
     </header>
-    <? if($result['repository_description']): ?>
+    <?php if($result['repository_description']): ?>
     <p style="padding: .75rem; font-style: italic;">
       <?= htmlentities($result['repository_description']) ?>
     </p>
-    <? endif ?>
+    <?php endif ?>
     <div class="card-content">
       <div class="content">
           <?= $result['file_fragment'] ?>
