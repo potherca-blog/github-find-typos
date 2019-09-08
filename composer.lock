@@ -162,23 +162,23 @@
         },
         {
             "name": "potherca/cli2web",
-            "version": "v0.6.0",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Potherca/cli2web.git",
-                "reference": "8518a96d10e5ce78726a078ff16b613fbba29c70"
+                "reference": "b9c92d5aaf767b0eaa0d565a186acd5026276637"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Potherca/cli2web/zipball/8518a96d10e5ce78726a078ff16b613fbba29c70",
-                "reference": "8518a96d10e5ce78726a078ff16b613fbba29c70",
+                "url": "https://api.github.com/repos/Potherca/cli2web/zipball/b9c92d5aaf767b0eaa0d565a186acd5026276637",
+                "reference": "b9c92d5aaf767b0eaa0d565a186acd5026276637",
                 "shasum": ""
             },
             "require": {
-                "hassankhan/config": "^2.0.0",
+                "hassankhan/config": "^2.0",
                 "mustache/mustache": "^2.12",
                 "php": "^5.6 | ^7.0",
-                "vlucas/phpdotenv": "^3.0.0"
+                "vlucas/phpdotenv": "^3.0"
             },
             "type": "library",
             "autoload": {
@@ -204,8 +204,9 @@
                     "homepage": "https://pother.ca/"
                 }
             ],
+            "description": "Automated web UI for any CLI command",
             "homepage": "https://pother.ca/cli2web",
-            "time": "2019-09-06T19:26:31+00:00"
+            "time": "2019-09-08T11:17:21+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
