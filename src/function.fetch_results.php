@@ -85,8 +85,13 @@ function fetch_results(array $arguments)
 
 function fetch_url($url)
 {
+    // You must authenticate to search for code across all public repositories.
     $githubToken = getenv('GITHUB_TOKEN');
     $githubUser = getenv('GITHUB_USER');
+
+    if ($githubToken === false || $githubUser === false) {
+        throw new \Exception('Both GITHUB_TOKEN and GITHUB_USER MUST be provided in the environment!');
+    }
 
     $ch = curl_init();
 
@@ -96,8 +101,9 @@ function fetch_url($url)
     ];
 
     $options = [
-        CURLOPT_HEADER => false,
         CURLOPT_CUSTOMREQUEST => 'GET',
+        CURLOPT_FAILONERROR => true,
+        CURLOPT_HEADER => false,
         CURLOPT_HTTPHEADER => $headers,
         CURLOPT_RETURNTRANSFER => 1,
         CURLOPT_URL => $url,
@@ -109,7 +115,7 @@ function fetch_url($url)
     $result = curl_exec($ch);
 
     if (curl_errno($ch)) {
-        $result = '{"error":"' . curl_error($ch).'"}';
+        throw new \Exception(curl_error($ch));
     }
 
     curl_close ($ch);
